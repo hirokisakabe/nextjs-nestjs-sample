@@ -3,5 +3,10 @@
   "service": "node",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
   "dockerComposeFile": ["docker-compose.yaml"],
-  "shutdownAction": "none"
+  "shutdownAction": "none",
+  "customizations": {
+    "vscode": {
+      "extensions": ["Prisma.prisma"]
+    }
+  }
 }
