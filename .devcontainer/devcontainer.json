@@ -1,0 +1,7 @@
+{
+  "name": "nextjs-nestjs-sample-devcontainer",
+  "service": "node",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "dockerComposeFile": ["docker-compose.yaml"],
+  "shutdownAction": "none"
+}

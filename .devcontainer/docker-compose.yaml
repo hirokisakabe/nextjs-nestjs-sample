@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  node:
+    image: mcr.microsoft.com/devcontainers/javascript-node:20-bullseye
+    container_name: node
+    environment:
+      - DB_HOST=postgres
+    volumes:
+      - ../..:/workspaces:cached
+    command: sleep infinity
+    network_mode: service:database
+  database:
+    image: postgres:13
+    container_name: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-data:
