@@ -1,0 +1,18 @@
+openapi: 3.0.0
+paths:
+  /:
+    get:
+      operationId: AppController_getHello
+      parameters: []
+      responses:
+        '200':
+          description: ''
+info:
+  title: Backend
+  description: Backend API definition
+  version: '1.0'
+  contact: {}
+tags: []
+servers: []
+components:
+  schemas: {}
