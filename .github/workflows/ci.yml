@@ -26,6 +26,8 @@ jobs:
       run:
         working-directory: backend
     runs-on: ubuntu-20.04
+    env:
+      DATABASE_URL: "postgresql://postgres:postgres@localhost:5432/postgres?schema=public"
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -35,7 +37,22 @@ jobs:
           cache-dependency-path: backend/package-lock.json
       - run: npm install
       - run: npm run db:generate-client
+      - run: npm run db:init
       - run: npm run lint
       - run: npm run test
+      - run: npm run test:e2e
       - run: npm run build
       - run: ./scripts/check-oas-updated.sh
+    services:
+      postgres:
+        image: postgres:13
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
