@@ -31,6 +31,20 @@ paths:
       responses:
         '200':
           description: ''
+          content:
+            application/json; charset=utf-8:
+              schema:
+                type: array
+                items:
+                  type: object
+                  required: ['id', 'title', 'price']
+                  properties:
+                    id:
+                      type: integer
+                    title:
+                      type: string
+                    price:
+                      type: string
 info:
   title: Backend
   description: Backend API definition

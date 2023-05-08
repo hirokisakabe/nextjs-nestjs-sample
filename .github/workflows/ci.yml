@@ -21,7 +21,7 @@ jobs:
       - run: npm install
       - run: npm run format:check
       - run: npm run lint
-      - run: npm run build
+      - run: ./scripts/ci/build.sh
   backend:
     defaults:
       run:
