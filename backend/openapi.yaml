@@ -7,6 +7,30 @@ paths:
       responses:
         '200':
           description: ''
+  /book/{id}:
+    get:
+      operationId: AppController_getBookById
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+  /book:
+    get:
+      operationId: AppController_getBooks
+      parameters:
+        - name: page
+          required: true
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
 info:
   title: Backend
   description: Backend API definition
