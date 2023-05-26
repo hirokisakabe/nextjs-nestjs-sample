@@ -1,0 +1,11 @@
+FROM node:16-alpine
+
+RUN npm i @stoplight/prism-cli@4.10.5 -g
+
+COPY openapi.yaml openapi.yaml
+
+EXPOSE 4010
+
+RUN apk add curl
+
+CMD ["prism", "mock", "openapi.yaml", "-h", "0.0.0.0"]

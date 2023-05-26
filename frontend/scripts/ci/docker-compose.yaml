@@ -1,0 +1,16 @@
+services:
+  frontend:
+    image: frontend
+    environment:
+      - BACKEND_URL=http://mock:4010
+    depends_on:
+      mock:
+        condition: service_healthy
+    command: "npm run build"
+  mock:
+    image: mock
+    healthcheck:
+      test: "curl -f http://localhost:4010 || exit 1"
+      interval: "5s"
+      timeout: "30s"
+      retries: 6
