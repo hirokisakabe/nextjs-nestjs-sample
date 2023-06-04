@@ -80,5 +80,5 @@ jobs:
       - run: npm test
       - if: contains(github.event_name, 'pull_request')
         run: npm run cdk synth
-      - if: contains(github.event_name, 'push')
+      - if: contains(github.event_name, 'pull_request')
         run: npm run cdk deploy -- --require-approval never
